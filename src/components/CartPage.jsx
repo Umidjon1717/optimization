@@ -5,22 +5,24 @@ const CartPage = () => {
   const { cart } = useCart();
 
   return (
-    <div className="container p-4">
-      <h2 className="text-xl font-semibold">Your Cart</h2>
-      {cart.length === 0 ? (
-        <p className="text-gray-500">Your cart is empty.</p>
-      ) : (
-        <div className="mt-4">
+    <div className="container mx-auto px-4 py-5">
+      <h2 className="text-2xl font-bold mb-5">Your Cart</h2>
+      {cart.length > 0 ? (
+        <ul className="space-y-4">
           {cart.map((product, index) => (
-            <div key={index} className="flex justify-between items-center py-2 border-b">
-              <img src={product.img} alt={product.title} className="w-16 h-16 object-cover" />
+            <li
+              key={index}
+              className="flex items-center justify-between border p-4 rounded-lg"
+            >
               <div>
-                <p className="font-semibold">{product.title}</p>
+                <h3 className="font-semibold">{product.title}</h3>
                 <p className="text-gray-500">{product.price}</p>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
+      ) : (
+        <p className="text-gray-500">Your cart is empty.</p>
       )}
     </div>
   );
